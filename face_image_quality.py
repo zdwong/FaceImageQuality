@@ -141,7 +141,7 @@ class InsightFace:
         db = mx.io.DataBatch(data=(data,))
         self.model.forward(db, is_train=False)
         dropout, embedding = self.model.get_outputs()
-        
+
         embedding = normalize(embedding.asnumpy()).flatten()
         
         return embedding, dropout.asnumpy()
@@ -256,16 +256,16 @@ def get_embedding_quality(img_input,
                              desc="Forward pass",
                              unit="pass",
                              disable=disable_tqdm):
-        
+
         X[forward_pass] = ser_fiq.predict(dropout_emb)
-           
+
     norm = normalize(X, axis=1)
-    
+
     # Only get the upper triangle of the distance matrix
     eucl_dist = euclidean_distances(norm, norm)[np.triu_indices(T, k=1)]
-   
+
     # Calculate score as given in the paper
-    return embedding, 2*(1/(1+np.exp(np.mean(eucl_dist)))) 
+    return embedding, 2*(1/(1+np.exp(np.mean(eucl_dist))))
     
 
 def get_arcface_embedding(img_input, use_preprocessing: bool = True):

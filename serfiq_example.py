@@ -19,8 +19,7 @@ if __name__ == "__main__":
     # Apply preprocessing if image is not aligned (default)
     embedding, score = get_embedding_quality(test_img,
                                                insightface_model,
-                                               ser_fiq
-                                               )
+                                               ser_fiq)
    
     print("SER-FIQ quality score of image 1 is", score)
     
@@ -32,8 +31,7 @@ if __name__ == "__main__":
     # Apply preprocessing if image is not aligned
     embedding2, score2 = get_embedding_quality(test_img2, 
                                                insightface_model, 
-                                               ser_fiq
-                                               )
+                                               ser_fiq)
    
     print("SER-FIQ quality score of image 2 is", score2)
     
